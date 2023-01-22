@@ -18,8 +18,6 @@ func run(ctx context.Context, l net.Listener) error {
 			fmt.Fprintf(w, "Hello %s", r.URL.Path[1:])
 		}),
 	}
-
-	//
 	eg, ctx := errgroup.WithContext(ctx)
 
 	// 複数の非同期処理を最後にまとめてエラーハンドリングする
