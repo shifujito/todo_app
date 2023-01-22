@@ -16,6 +16,5 @@ func main() {
 	if err != nil {
 		fmt.Printf("failed to terminate server: %v", err)
 		os.Exit(1)
-
 	}
 }
