@@ -12,9 +12,9 @@ import (
 func run(ctx context.Context) error {
 	// serverの情報
 	s := &http.Server{
-		Addr: "18080",
+		Addr: ":18080",
 		Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			fmt.Fprintf(w, "Hello, %s", r.URL.Path[1:])
+			fmt.Fprintf(w, "Hello %s", r.URL.Path[1:])
 		}),
 	}
 

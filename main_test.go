@@ -32,7 +32,7 @@ func TestRun(t *testing.T) {
 		t.Fatalf("failed to read body: %v", err)
 	}
 
-	want := fmt.Sprintf("Hello %s!", in)
+	want := fmt.Sprintf("Hello %s", in)
 	if string(got) != want {
 		t.Errorf("want %q, but got %q", want, got)
 	}
