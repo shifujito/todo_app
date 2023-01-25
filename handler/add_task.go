@@ -2,6 +2,7 @@ package handler
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -21,6 +22,8 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		Title string `json:"title" validate:"required"`
 	}
 
+	fmt.Println(r)
+	// b.Title = "Implement a handler"
 	if err := json.NewDecoder(r.Body).Decode(&b); err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),
