@@ -32,35 +32,6 @@ func run(ctx context.Context) error {
 	mux := NewMux()
 	s := NewServer(l, mux)
 	return s.Run(ctx)
-	// log.Printf("start with: %v", url)
-	// // serverの情報
-	// s := &http.Server{
-	// 	Handler: http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-	// 		time.Sleep(5 * time.Second)
-	// 		fmt.Fprintf(w, "Hello %s", r.URL.Path[1:])
-	// 	}),
-	// }
-
-	// //
-	// eg, ctx := errgroup.WithContext(ctx)
-
-	// // 複数の非同期処理を最後にまとめてエラーハンドリングする
-	// eg.Go(func() error {
-	// 	if err := s.Serve(l); err != nil && err != http.ErrServerClosed {
-	// 		log.Printf("failed to close: %+v", err)
-	// 		return err
-	// 	}
-	// 	return nil
-	// })
-
-	// // チャネルから通知を待機する
-	// <-ctx.Done()
-	// if err := s.Shutdown(context.Background()); err != nil {
-	// 	log.Printf("failed to shutdown: %+v", err)
-	// }
-
-	// // Goメソッドで起動した別ゴルーチンを待つ
-	// return eg.Wait()
 }
 
 func main() {

@@ -2,17 +2,16 @@ package handler
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/go-playground/validator/v10"
+	"github.com/jmoiron/sqlx"
 	"github.com/shifujito/todo_app/entity"
 	"github.com/shifujito/todo_app/store"
 )
 
 type AddTask struct {
-	Store     *store.TaskStore
+	DB        *sqlx.DB
 	Validator *validator.Validate
 }
 
@@ -22,8 +21,6 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		Title string `json:"title" validate:"required"`
 	}
 
-	fmt.Println(r)
-	// b.Title = "Implement a handler"
 	if err := json.NewDecoder(r.Body).Decode(&b); err != nil {
 		RespondJSON(ctx, w, &ErrResponse{
 			Message: err.Error(),
@@ -38,9 +35,8 @@ func (at *AddTask) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	}
 
 	t := &entity.Task{
-		Title:   b.Title,
-		Status:  entity.TaskStatusTodo,
-		Created: time.Now(),
+		Title:  b.Title,
+		Status: entity.TaskStatusTodo,
 	}
 
 	id, err := store.Tasks.Add(t)
