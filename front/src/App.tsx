@@ -9,7 +9,6 @@ function App() {
     alert('This is box #:'+ count)
   }
 
-
   return (
     <div className="App">
       <div className='container' onClick={onClick}>
