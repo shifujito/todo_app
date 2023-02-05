@@ -1,19 +1,14 @@
 import { useState } from 'react'
+import React, { Component } from 'react'
+import {IngredientsList} from './components/ingredientsList'
 import reactLogo from './assets/react.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const onClick = () => {
-    setCount(count + 1);
-    alert('This is box #:'+ count)
-  }
 
   return (
     <div className="App">
-      <div className='container' onClick={onClick}>
-        {count}
-      </div>
+      <IngredientsList title="a"/>
     </div>
   )
 }
