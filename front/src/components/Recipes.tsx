@@ -1,8 +1,4 @@
-type Ingredient = {
-  name: string;
-  amount: number;
-  measurement: string;
-};
+import type { Ingredient } from "../types";
 
 export type RecipeProps = {
   name: string;
@@ -10,21 +6,23 @@ export type RecipeProps = {
   steps: string[];
 };
 
-export const Recipe: React.FC<RecipeProps> = ({ name, ingredients, steps }) => {
+const Recipe: React.FC<RecipeProps> = ({ name, ingredients, steps }) => {
   return (
-    <section id={name.toLowerCase().replace(/ /g, "-")}>
+    <>
       <h1>{name}</h1>
-      <ul className="ingredients">
+      <ul className="ingredient">
         {ingredients.map((ingredient, i) => (
           <li key={i}>{ingredient.name}</li>
         ))}
       </ul>
-      <section className="instructions">
+      <div className="instructions">
         <h2>Cooking Instructions</h2>
         {steps.map((step, i) => (
           <p key={i}>{step}</p>
         ))}
-      </section>
-    </section>
+      </div>
+    </>
   );
 };
+
+export default Recipe;
