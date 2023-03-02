@@ -4,23 +4,24 @@ import Star from "./Star";
 
 type StarRatingProps = {
   totalStars: number;
+  style: any;
 };
 
-const StarRaring: React.FC<StarRatingProps> = ({ totalStars }) => {
+const StarRaring: React.FC<StarRatingProps> = ({ style, totalStars }) => {
   const [selectedStars, setSelectedStars] = useState(0);
   return (
-    <>
+    <div style={style}>
       {[...Array(totalStars)].map((n, i) => (
         <Star
           key={i}
           selected={selectedStars > i}
-          onSelect={() => setSelectedStars(selectedStars + 1)}
+          onSelect={() => setSelectedStars(i + 1)}
         />
       ))}
       <p>
         {selectedStars} of {totalStars} Stars
       </p>
-    </>
+    </div>
   );
 };
 

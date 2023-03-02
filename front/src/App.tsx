@@ -5,7 +5,7 @@ import "./App.css";
 import StarRating from "./components/StarRaring";
 
 function App() {
-  return <StarRating totalStars={5} />;
+  return <StarRating style={{ backgroundColor: "lightblue" }} totalStars={5} />;
 }
 
 export default App;
