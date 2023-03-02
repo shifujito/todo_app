@@ -1,8 +1,8 @@
-import type { Ingredient } from "../types";
+import type { IngredientType } from "../types";
 
 export type RecipeProps = {
   name: string;
-  ingredients: Ingredient[];
+  ingredients: IngredientType[];
   steps: string[];
 };
 

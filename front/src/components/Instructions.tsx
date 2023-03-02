@@ -15,3 +15,5 @@ const Instructions: React.FC<InstructionsProps> = ({ title, steps }) => {
     </section>
   );
 };
+
+export default Instructions;

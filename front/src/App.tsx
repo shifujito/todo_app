@@ -2,13 +2,10 @@ import { useState } from "react";
 import React, { Component } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
+import StarRating from "./components/StarRaring";
 
 function App() {
-  return (
-    <div className="App">
-      <p>a</p>
-    </div>
-  );
+  return <StarRating totalStars={5} />;
 }
 
 export default App;
