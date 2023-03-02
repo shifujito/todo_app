@@ -1,26 +1,25 @@
 import React from "react";
-import { FaStar } from "react-icons/fa";
 import { useState } from "react";
-
-type StarProps = {
-  selected: boolean;
-};
+import Star from "./Star";
 
 type StarRatingProps = {
   totalStars: number;
 };
 
-const Star: React.FC<StarProps> = ({ selected }) => {
-  return <FaStar color={selected ? "red" : "grey"} />;
-};
-
 const StarRaring: React.FC<StarRatingProps> = ({ totalStars }) => {
-  const [selectedStars] = useState(3);
+  const [selectedStars, setSelectedStars] = useState(0);
   return (
     <>
       {[...Array(totalStars)].map((n, i) => (
-        <Star key={i} selected={selectedStars > i} />
+        <Star
+          key={i}
+          selected={selectedStars > i}
+          onSelect={() => setSelectedStars(selectedStars + 1)}
+        />
       ))}
+      <p>
+        {selectedStars} of {totalStars} Stars
+      </p>
     </>
   );
 };
