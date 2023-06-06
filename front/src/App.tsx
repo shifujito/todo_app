@@ -1,13 +1,8 @@
-import { useState } from "react";
-
 import "./App.css";
+import InputTodo from "./components/inputTodo";
 
 function App() {
-  return (
-    <>
-      <div>hoge</div>
-    </>
-  );
+  return <InputTodo />;
 }
 
 export default App;
