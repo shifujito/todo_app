@@ -22,7 +22,7 @@ const TodoBoard: React.FC = () => {
   return (
     <ul>
       {todoList.map((todo: Todo) => (
-        <TodoDetail todo={todo} />
+        <TodoDetail key={todo.id} todo={todo} />
       ))}
     </ul>
   );
