@@ -1,11 +1,11 @@
-import EditTodo from "./components/editTodo";
-import InputTodo from "./components/inputTodo";
+import InputTodoTitle from "./components/inputTodoTitle";
+import TodoBoard from "./components/todoBoard";
 
 function App() {
   return (
     <>
-      <InputTodo />
-      <EditTodo />
+      <InputTodoTitle />
+      <TodoBoard />
     </>
   );
 }
