@@ -1,5 +1,5 @@
-import InputTodoTitle from "./components/inputTodoTitle";
-import TodoBoard from "./components/todoBoard";
+import InputTodoTitle from './components/inputTodoTitle';
+import TodoBoard from './components/todoBoard';
 
 function App() {
   return (

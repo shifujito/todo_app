@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Todo } from "../types";
-import DatePicker from "react-date-picker";
-import "react-datepicker/dist/react-datepicker.css";
+import React, { useState } from 'react';
+import { Todo } from '../types';
+import DatePicker from 'react-date-picker';
+import 'react-datepicker/dist/react-datepicker.css';
 import {
   Center,
   Text,
@@ -16,7 +16,7 @@ import {
   Input,
   FormLabel,
   Flex,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
 type TodoDetailProps = {
   todo: Todo;
@@ -41,30 +41,30 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
   };
   return (
     <Flex
-      bg={"gray"}
-      width={"250px"}
-      height={"100px"}
-      margin={"10px"}
-      borderRadius={"2xl"}
+      bg={'gray'}
+      width={'250px'}
+      height={'100px'}
+      margin={'10px'}
+      borderRadius={'2xl'}
       onClick={onOpen}
       alignItems="center"
-      cursor={"pointer"}
+      cursor={'pointer'}
     >
-      <Text key={todo.id} marginLeft={"10px"}>
+      <Text key={todo.id} marginLeft={'10px'}>
         {todo.title}
       </Text>
-      <Modal isOpen={isOpen} onClose={onClose} size={"4xl"}>
+      <Modal isOpen={isOpen} onClose={onClose} size={'4xl'}>
         <ModalOverlay />
         <ModalContent>
           <ModalBody>
             <Flex alignItems="center">
-              <FormLabel htmlFor="title" width={"100px"}>
+              <FormLabel htmlFor="title" width={'100px'}>
                 タイトル
               </FormLabel>
               <Input id="title" value={title} onChange={handleTitleInput} />
             </Flex>
             <Flex alignItems="center">
-              <FormLabel htmlFor="title" width={"100px"}>
+              <FormLabel htmlFor="title" width={'100px'}>
                 内容
               </FormLabel>
               <Textarea

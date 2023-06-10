@@ -1,13 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Todo } from "../types";
-import TodoDetail from "./todoDetail";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Todo } from '../types';
+import TodoDetail from './todoDetail';
 
 const TodoBoard: React.FC = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8080/todo", {
+      .get('http://localhost:8080/todo', {
         /* リクエストボディ */
       })
       .then((response) => {
