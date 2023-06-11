@@ -1,11 +1,11 @@
-import InputTodoTitle from './components/inputTodoTitle';
-import TodoBoard from './components/todoBoard';
+import TaskBoard from './components/addBoard';
 
 function App() {
   return (
     <>
-      <InputTodoTitle />
-      <TodoBoard />
+      <TaskBoard />
+      {/* <InputTodoTitle />
+      <TaskCard /> */}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { Input, Flex, Center, Button } from '@chakra-ui/react';
 import { useState } from 'react';
 
-const InputTodoTitle: React.FC = () => {
+const AddTodoTitle: React.FC = () => {
   const [todo, setTodo] = useState<string>('');
   const handelInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
@@ -20,4 +20,4 @@ const InputTodoTitle: React.FC = () => {
   );
 };
 
-export default InputTodoTitle;
+export default AddTodoTitle;

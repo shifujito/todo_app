@@ -3,16 +3,20 @@ import React, { useEffect, useState } from 'react';
 import { Todo } from '../types';
 import TodoDetail from './todoDetail';
 
-const TodoBoard: React.FC = () => {
+type TaskCardProps = {
+  cardId: number;
+};
+
+const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
   useEffect(() => {
     axios
-      .get('http://localhost:8080/todo', {
+      .get('http://localhost:8080/todos', {
         /* リクエストボディ */
       })
       .then((response) => {
-        console.log(response.data);
-        setTodoList(response.data);
+        const todoList: Todo[] = response.data;
+        setTodoList(todoList.filter((todo) => todo.cardId === cardId));
       })
       .catch((error) => {
         console.error(error);
@@ -28,4 +32,4 @@ const TodoBoard: React.FC = () => {
   );
 };
 
-export default TodoBoard;
+export default TaskCard;

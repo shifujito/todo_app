@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Todo } from '../types';
-import DatePicker from 'react-date-picker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
-  Center,
   Text,
   Textarea,
   Modal,
@@ -26,7 +24,7 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [title, setTitle] = useState<string>(todo.title);
   const [content, setContent] = useState<string>(todo.content);
-  const [startDate, setStartDate] = useState<Date>(todo.startDate);
+  // const [startDate, setStartDate] = useState<Date>(todo.startDate);
 
   const handleTitleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -36,9 +34,9 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
     setContent(e.target.value);
   };
 
-  const handleStartDateInput = (date: any) => {
-    setStartDate(date);
-  };
+  // const handleStartDateInput = (date: any) => {
+  //   setStartDate(date);
+  // };
   return (
     <Flex
       bg={'gray'}
