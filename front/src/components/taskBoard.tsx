@@ -13,6 +13,7 @@ const TaskBoard: React.FC = () => {
       setCardList(res.data);
     });
   }, []);
+
   return (
     <Flex>
       {cardList.map((card: Card) => (

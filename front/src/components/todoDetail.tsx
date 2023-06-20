@@ -34,6 +34,11 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
     setContent(e.target.value);
   };
 
+  let isDragging = false;
+  const handleDragStart = () => {
+    isDragging = false;
+  };
+
   // const handleStartDateInput = (date: any) => {
   //   setStartDate(date);
   // };
@@ -47,6 +52,8 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
       onClick={onOpen}
       alignItems="center"
       cursor={'pointer'}
+      draggable
+      onDragStart={handleDragStart}
     >
       <Text key={todo.id} marginLeft={'10px'}>
         {todo.title}
