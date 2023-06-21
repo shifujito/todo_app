@@ -18,3 +18,22 @@ $ npm create vite
 
 2. Reactを選択
 3. TypeScriptを選択する
+
+
+## Docker上でpsqlとairを動かす
+
+imageとcontainerの作成・起動をまとめて実行してくれます。
+
+```bash
+$ docker-compose up -d
+```
+
+Dockerコンテナ上のpostgresにアクセス
+```bash
+$ docker exec -it todo_app_psql psql -U postgres -d todo_app
+```
+
+Dockerコンテナ上のログを見る方法
+```bash
+$ docker logs -f todo_app_go
+```
