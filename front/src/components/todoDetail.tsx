@@ -25,7 +25,6 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
   const [title, setTitle] = useState<string>(todo.title);
   const [content, setContent] = useState<string>(todo.content);
   // const [startDate, setStartDate] = useState<Date>(todo.startDate);
-
   const handleTitleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };

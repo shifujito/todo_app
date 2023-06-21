@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  todo_app_psql:
+    build:
+      # Dockerfileを参照するpath
+      context: ./middleware/psql
+    restart: always
+    container_name: todo_app_psql
+    env_file:
+      - ./middleware/.env.middleware
+    ports:
+      - "5432:5432"
+    volumes:
+      - psql-data:/var/lib/postgresql/data
+
+volumes:
+  psql-data:
