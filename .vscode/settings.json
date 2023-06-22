@@ -1,7 +1,11 @@
 {
     "cSpell.words": [
         "chakra",
-        "datepicker"
+        "datepicker",
+        "dbname",
+        "labstack",
+        "psql",
+        "sslmode"
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true

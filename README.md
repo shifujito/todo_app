@@ -37,3 +37,26 @@ Dockerコンテナ上のログを見る方法
 ```bash
 $ docker logs -f todo_app_go
 ```
+
+
+## バックエンドディレクトリ構成
+```
+.
+├── Dockerfile
+├── api
+│   ├── handlers
+│   │   └── todo_handler.go
+│   ├── models
+│   │   ├── card.go
+│   │   ├── todo.go
+│   │   └── users.go
+│   └── store
+├── go.mod
+├── go.sum
+├── internal
+├── main.go
+├── test
+└── tmp
+    ├── build-errors.log
+    └── main
+```
