@@ -1,12 +1,9 @@
 package model
 
-import (
-	"github.com/google/uuid"
-	"github.com/jinzhu/gorm"
-)
+import "time"
 
 type Card struct {
-	gorm.Model
-	Id    uuid.UUID `gorm:"type:uuid;primaryKey;default:gen_random_uuid()"`
-	Title string    `gorm:"not null"`
+	ID        int    `gorm:"primaryKey;autoIncrement"`
+	Title     string `gorm:"not null"`
+	StartDate time.Time
 }

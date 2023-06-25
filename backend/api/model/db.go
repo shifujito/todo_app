@@ -10,6 +10,7 @@ import (
 )
 
 func init() {
+	log.Println('a')
 	user, pass, dbname, hostname := dbEnv()
 	// psqlに接続
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", hostname, user, pass, dbname)
@@ -18,7 +19,7 @@ func init() {
 		panic(err)
 	}
 	// db.AutoMigrate().DropTable(&model.Todo{})
-	db.AutoMigrate(&Todo{})
+	db.AutoMigrate(&Todo{}, &Card{})
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -26,6 +27,7 @@ func init() {
 }
 
 func Db() *gorm.DB {
+	log.Println('b')
 	user, pass, dbname, hostname := dbEnv()
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=disable", hostname, user, pass, dbname)
 	db, err := gorm.Open("postgres", dsn)
