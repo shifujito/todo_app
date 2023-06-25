@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -26,6 +27,21 @@ func (h *TodoHandler) CreateTodo(c echo.Context) error {
 	if err := c.Bind(t); err != nil {
 		return err
 	}
-	h.Store.CreateTodo(t)
+	// 必須チェック
+	if err := requiredValid(t); err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+	err := h.Store.CreateTodo(t)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
 	return c.JSON(http.StatusCreated, t)
+}
+
+func requiredValid(t *model.Todo) error {
+	// タイトルは必須
+	if t.Title == "" {
+		return fmt.Errorf("title is required")
+	}
+	return nil
 }

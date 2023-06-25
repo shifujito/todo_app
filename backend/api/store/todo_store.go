@@ -1,6 +1,8 @@
 package store
 
 import (
+	"fmt"
+
 	"github.com/jinzhu/gorm"
 	"github.com/shifujito/todo_app/api/model"
 )
@@ -19,6 +21,10 @@ func (s TodoStore) GetTodos() ([]model.Todo, error) {
 	return todos, nil
 }
 
-func (s TodoStore) CreateTodo(todo *model.Todo) {
-	s.db.Create(&todo)
+func (s TodoStore) CreateTodo(todo *model.Todo) error {
+	result := s.db.Create(&todo)
+	if result.Error != nil {
+		return fmt.Errorf("Invalid request param")
+	}
+	return nil
 }
