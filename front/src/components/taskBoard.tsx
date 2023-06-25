@@ -9,9 +9,16 @@ import AddTodoTitle from './addTodo';
 const TaskBoard: React.FC = () => {
   const [cardList, setCardList] = useState<Card[]>([]);
   useEffect(() => {
-    axios.get('http://localhost:8080/cards', {}).then((res) => {
-      setCardList(res.data);
-    });
+    axios
+      .get('http://localhost:8080/cards', {})
+      .then((res) => {
+        setCardList(res.data);
+      })
+      .catch(() => {
+        axios.get('http://localhost:8888/cards', {}).then((res) => {
+          setCardList(res.data);
+        });
+      });
   }, []);
 
   return (
