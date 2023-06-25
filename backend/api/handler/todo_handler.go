@@ -39,6 +39,13 @@ func (h *TodoHandler) CreateTodo(c echo.Context) error {
 	return c.JSON(http.StatusCreated, t)
 }
 
+func (h *TodoHandler) DeleteTodos(c echo.Context) error {
+	if err := h.Store.DeleteTodos(); err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusNoContent, nil)
+}
+
 func requiredTodoValid(t *model.Todo) error {
 	// タイトルは必須
 	if t.Title == "" {

@@ -28,3 +28,12 @@ func (s TodoStore) CreateTodo(todo *model.Todo) error {
 	}
 	return nil
 }
+
+func (s TodoStore) DeleteTodos() error {
+	var todos []model.Todo
+	result := s.db.Delete(&todos)
+	if result.Error != nil {
+		return fmt.Errorf("fail to delete todo")
+	}
+	return nil
+}

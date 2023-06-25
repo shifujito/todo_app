@@ -25,6 +25,7 @@ func main() {
 	// v1 := e.Group("/api/v1")
 	e.GET("/todos", todoHandler.GetTodos)
 	e.POST("/todos", todoHandler.CreateTodo)
+	e.DELETE("/todos", todoHandler.DeleteTodos)
 	e.GET("/cards", cardHandler.GetCard)
 	e.POST("/cards", cardHandler.CreateCard)
 	// サーバー起動

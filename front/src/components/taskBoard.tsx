@@ -12,6 +12,7 @@ const TaskBoard: React.FC = () => {
     axios
       .get('http://localhost:8080/cards', {})
       .then((res) => {
+        console.log(res);
         setCardList(res.data);
       })
       .catch(() => {
