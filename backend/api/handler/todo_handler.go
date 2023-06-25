@@ -25,7 +25,7 @@ func (h *TodoHandler) GetTodos(c echo.Context) error {
 func (h *TodoHandler) CreateTodo(c echo.Context) error {
 	t := new(model.Todo)
 	if err := c.Bind(t); err != nil {
-		return err
+		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	// 必須チェック
 	if err := requiredTodoValid(t); err != nil {

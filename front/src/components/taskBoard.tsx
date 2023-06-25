@@ -4,7 +4,7 @@ import { Card } from '../types';
 import AddBoard from './addBoard';
 import { Text, Flex, Box } from '@chakra-ui/react';
 import TaskCard from './taskCard';
-import AddTodoTitle from './addTodo';
+import AddTodoTitle from './addTodoTitle';
 
 const TaskBoard: React.FC = () => {
   const [cardList, setCardList] = useState<Card[]>([]);
@@ -12,7 +12,6 @@ const TaskBoard: React.FC = () => {
     axios
       .get('http://localhost:8080/cards', {})
       .then((res) => {
-        console.log(res);
         setCardList(res.data);
       })
       .catch(() => {
@@ -33,7 +32,7 @@ const TaskBoard: React.FC = () => {
         >
           <Text>{card.title}</Text>
           <TaskCard cardId={card.id} />
-          <AddTodoTitle />
+          <AddTodoTitle cardId={card.id} />
         </Box>
       ))}
       <Box>

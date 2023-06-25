@@ -8,8 +8,8 @@ import (
 
 type Todo struct {
 	ID        uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()"`
-	CardId    string
-	Title     string `gorm:"not null" json:"title"`
+	CardId    int       `gorm:"not null" json:"cardId"`
+	Title     string    `gorm:"not null" json:"title"`
 	StartDate time.Time
 	EndDate   time.Time
 	Content   *string
