@@ -7,7 +7,6 @@ services:
     container_name: todo_app_go
     volumes:
       - ./backend:/app
-      - .env:/app/.env
     tty: true
     depends_on:
       - todo_app_psql
