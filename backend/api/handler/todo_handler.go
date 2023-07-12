@@ -32,11 +32,11 @@ func (h *TodoHandler) CreateTodo(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
 	// インサート
-	err := h.Store.CreateTodo(t)
+	todo, err := h.Store.CreateTodo(t)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, err.Error())
 	}
-	return c.JSON(http.StatusCreated, t)
+	return c.JSON(http.StatusCreated, todo)
 }
 
 func (h *TodoHandler) DeleteTodos(c echo.Context) error {

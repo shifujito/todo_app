@@ -17,7 +17,7 @@ services:
     build:
       # Dockerfileを参照するpath
       context: ./middleware/psql
-    restart: always
+    # restart: always
     container_name: todo_app_psql
     env_file:
       - ./middleware/.env.middleware

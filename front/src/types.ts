@@ -11,3 +11,8 @@ export type Card = {
   id: number;
   title: string;
 };
+
+export type PostTodo = {
+  title: string;
+  cardId: number;
+};

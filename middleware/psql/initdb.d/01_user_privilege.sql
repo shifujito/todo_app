@@ -1,2 +1,2 @@
 CREATE DATABASE IF NOT EXISTS todo_app;
-GRANT ALL PRIVILEGES ON *.* TO 'user'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'postgres'@'%';

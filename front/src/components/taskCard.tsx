@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Todo } from '../types';
+import { PostTodo, Todo } from '../types';
 import TodoDetail from './todoDetail';
+import AddTodoTitle from './addTodoTitle';
 
 type TaskCardProps = {
   cardId: number;
@@ -23,12 +24,22 @@ const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
       });
   }, []);
 
+  const handleAddTodo = (newTodo: PostTodo) => {
+    axios.post('http://localhost:8080/todos', newTodo).then((res) => {
+      console.log(res);
+      setTodoList([...todoList, res.data]);
+    });
+  };
+
   return (
-    <ul>
-      {todoList.map((todo: Todo) => (
-        <TodoDetail key={todo.id} todo={todo} />
-      ))}
-    </ul>
+    <>
+      <ul>
+        {todoList.map((todo: Todo) => (
+          <TodoDetail key={todo.id} todo={todo} />
+        ))}
+      </ul>
+      <AddTodoTitle cardId={cardId} onAddTodo={handleAddTodo} />
+    </>
   );
 };
 

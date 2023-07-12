@@ -21,12 +21,12 @@ func (s TodoStore) GetTodos() ([]model.Todo, error) {
 	return todos, nil
 }
 
-func (s TodoStore) CreateTodo(todo *model.Todo) error {
+func (s TodoStore) CreateTodo(todo *model.Todo) (*model.Todo, error) {
 	result := s.db.Create(&todo)
 	if result.Error != nil {
-		return fmt.Errorf("Invalid request param")
+		return todo, fmt.Errorf("Invalid request param")
 	}
-	return nil
+	return todo, nil
 }
 
 func (s TodoStore) DeleteTodos() error {

@@ -1,20 +1,25 @@
 import { Input, Flex, Center, Button } from '@chakra-ui/react';
-import axios from 'axios';
 import { useState } from 'react';
+import { PostTodo } from '../types';
 
 type AddTodoTitleProps = {
   cardId: number;
+  onAddTodo: (newTodo: PostTodo) => void;
 };
 
-const AddTodoTitle: React.FC<AddTodoTitleProps> = ({ cardId }) => {
+const AddTodoTitle: React.FC<AddTodoTitleProps> = ({ cardId, onAddTodo }) => {
   const [todo, setTodo] = useState<string>('');
   const handelInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(e.target.value);
   };
-  const handleClick = () => {
-    axios
-      .post('http://localhost:8080/todos', { title: todo, cardId: cardId })
-      .then((res) => console.log(res));
+  const handleAddTodo = () => {
+    const newTodo: PostTodo = {
+      title: todo,
+      cardId: cardId,
+    };
+
+    onAddTodo(newTodo);
+    setTodo('');
   };
 
   return (
@@ -25,7 +30,7 @@ const AddTodoTitle: React.FC<AddTodoTitleProps> = ({ cardId }) => {
           value={todo}
           onChange={handelInput}
         />
-        <Button colorScheme="blue" onClick={handleClick}>
+        <Button colorScheme="blue" onClick={handleAddTodo}>
           追加
         </Button>
       </Center>

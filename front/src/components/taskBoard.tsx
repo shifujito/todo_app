@@ -4,7 +4,6 @@ import { Card } from '../types';
 import AddBoard from './addBoard';
 import { Text, Flex, Box } from '@chakra-ui/react';
 import TaskCard from './taskCard';
-import AddTodoTitle from './addTodoTitle';
 
 const TaskBoard: React.FC = () => {
   const [cardList, setCardList] = useState<Card[]>([]);
@@ -32,7 +31,6 @@ const TaskBoard: React.FC = () => {
         >
           <Text>{card.title}</Text>
           <TaskCard cardId={card.id} />
-          <AddTodoTitle cardId={card.id} />
         </Box>
       ))}
       <Box>
