@@ -18,9 +18,10 @@ import {
 
 type TodoDetailProps = {
   todo: Todo;
+  onDeleteTodo: (id: string) => void;
 };
 
-const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
+const TodoDetail: React.FC<TodoDetailProps> = ({ todo, onDeleteTodo }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [title, setTitle] = useState<string>(todo.title);
   const [content, setContent] = useState<string>(todo.content);
@@ -31,6 +32,10 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
 
   const handleContentInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
+  };
+
+  const handleDelete = () => {
+    onDeleteTodo(todo.id);
   };
 
   let isDragging = false;
@@ -87,7 +92,12 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo }) => {
             <Text>期日: {todo.endDate}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue">保存</Button>
+            <Button colorScheme="red" onClick={handleDelete}>
+              削除
+            </Button>
+            <Button colorScheme="blue" marginLeft={'5px'}>
+              保存
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

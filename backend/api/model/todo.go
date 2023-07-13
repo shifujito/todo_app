@@ -7,7 +7,7 @@ import (
 )
 
 type Todo struct {
-	ID        uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()"`
+	ID        uuid.UUID `gorm:"type:uuid;default:gen_random_uuid()" json:"id"`
 	CardId    int       `gorm:"not null" json:"cardId"`
 	Title     string    `gorm:"not null" json:"title"`
 	StartDate time.Time

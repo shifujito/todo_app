@@ -29,6 +29,17 @@ func (s TodoStore) CreateTodo(todo *model.Todo) (*model.Todo, error) {
 	return todo, nil
 }
 
+func (s TodoStore) DeleteTodo(id string) error {
+	// fmt.Println(id)
+	todo := model.Todo{}
+	// todo.ID = id;
+	result := s.db.Delete(todo)
+	if result.Error != nil {
+		return fmt.Errorf("Invalid request param")
+	}
+	return nil
+}
+
 func (s TodoStore) DeleteTodos() error {
 	var todos []model.Todo
 	result := s.db.Delete(&todos)

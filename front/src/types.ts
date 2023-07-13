@@ -1,5 +1,5 @@
 export type Todo = {
-  id: number;
+  id: string;
   cardId: number;
   title: string;
   startDate: Date;
@@ -15,4 +15,8 @@ export type Card = {
 export type PostTodo = {
   title: string;
   cardId: number;
+};
+
+export type PostCard = {
+  title: string;
 };

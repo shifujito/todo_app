@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Card } from '../types';
+import { Card, PostCard } from '../types';
 import AddBoard from './addBoard';
 import { Text, Flex, Box } from '@chakra-ui/react';
 import TaskCard from './taskCard';
@@ -20,6 +20,13 @@ const TaskBoard: React.FC = () => {
       });
   }, []);
 
+  const handleAddBoard = (newBoard: PostCard) => {
+    axios.post('http://localhost:8080/cards', newBoard).then((res) => {
+      console.log(res);
+      setCardList([...cardList, res.data]);
+    });
+  };
+
   return (
     <Flex>
       {cardList.map((card: Card) => (
@@ -34,7 +41,7 @@ const TaskBoard: React.FC = () => {
         </Box>
       ))}
       <Box>
-        <AddBoard />
+        <AddBoard onAddCard={handleAddBoard} />
       </Box>
     </Flex>
   );

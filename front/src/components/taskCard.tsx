@@ -31,11 +31,22 @@ const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
     });
   };
 
+  const handleDeleteTodo = (todoId: string) => {
+    axios.delete(`http://localhost:8080/todos/${todoId}`).then(() => {
+      const updateTodos = todoList.filter((todo) => todo.id !== todoId);
+      setTodoList(updateTodos);
+    });
+  };
+
   return (
     <>
       <ul>
         {todoList.map((todo: Todo) => (
-          <TodoDetail key={todo.id} todo={todo} />
+          <TodoDetail
+            key={todo.id}
+            todo={todo}
+            onDeleteTodo={handleDeleteTodo}
+          />
         ))}
       </ul>
       <AddTodoTitle cardId={cardId} onAddTodo={handleAddTodo} />
