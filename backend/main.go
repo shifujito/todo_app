@@ -29,6 +29,7 @@ func main() {
 	e.DELETE("/todos", todoHandler.DeleteTodos)
 	e.GET("/cards", cardHandler.GetCard)
 	e.POST("/cards", cardHandler.CreateCard)
+	e.DELETE("/cards/:id", cardHandler.DeleteCard)
 	// サーバー起動
 	if err := e.Start(":8080"); err != nil {
 		log.Fatal(err)

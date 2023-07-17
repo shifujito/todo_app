@@ -3,6 +3,7 @@ package handler
 import (
 	"fmt"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/labstack/echo"
@@ -40,6 +41,17 @@ func (h CardHandler) CreateCard(c echo.Context) error {
 func (h CardHandler) GetCard(c echo.Context) error {
 	cards, _ := h.Store.GetCard()
 	return c.JSON(http.StatusOK, cards)
+}
+
+func (h CardHandler) DeleteCard(c echo.Context) error {
+	stringId := c.Param("id")
+	id, _ := strconv.Atoi(stringId)
+	card, err := h.Store.DeleteCard(id)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err)
+	}
+	return c.JSON(http.StatusOK, card)
+
 }
 
 func requiredCardValid(c *model.Card) error {

@@ -28,3 +28,13 @@ func (s CardStore) GetCard() ([]model.Card, error) {
 	s.db.Find(&cards)
 	return cards, nil
 }
+
+func (s CardStore) DeleteCard(id int) (model.Card, error) {
+	card := model.Card{}
+	card.ID = id
+	result := s.db.Delete(&card)
+	if result.Error != nil {
+		return card, fmt.Errorf("fail to delete card")
+	}
+	return card, nil
+}
