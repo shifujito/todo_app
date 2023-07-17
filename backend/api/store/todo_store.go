@@ -3,6 +3,7 @@ package store
 import (
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/jinzhu/gorm"
 	"github.com/shifujito/todo_app/api/model"
 )
@@ -30,9 +31,9 @@ func (s TodoStore) CreateTodo(todo *model.Todo) (*model.Todo, error) {
 }
 
 func (s TodoStore) DeleteTodo(id string) error {
-	// fmt.Println(id)
 	todo := model.Todo{}
-	// todo.ID = id;
+	uuid, _ := uuid.Parse(id)
+	todo.ID = uuid
 	result := s.db.Delete(todo)
 	if result.Error != nil {
 		return fmt.Errorf("Invalid request param")
