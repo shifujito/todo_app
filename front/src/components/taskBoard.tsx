@@ -4,8 +4,10 @@ import { Card, PostCard } from '../types';
 import AddBoard from './addBoard';
 import { Text, Flex, Box } from '@chakra-ui/react';
 import TaskCard from './taskCard';
+import { DeleteIcon } from '@chakra-ui/icons';
+import { IconButton } from '@chakra-ui/react';
 
-const TaskBoard: React.FC = () => {
+const useTaskBoard = () => {
   const [cardList, setCardList] = useState<Card[]>([]);
   useEffect(() => {
     axios
@@ -27,6 +29,17 @@ const TaskBoard: React.FC = () => {
     });
   };
 
+  const handleDeleteBoard = (boardId: number) => () => {
+    axios.delete(`http://localhost:8080/cards/${boardId}`).then(() => {
+      const newCardList = cardList.filter((card) => card.id !== boardId);
+      setCardList(newCardList);
+    });
+  };
+
+  return { cardList, handleAddBoard, handleDeleteBoard };
+};
+const TaskBoard: React.FC = () => {
+  const { cardList, handleAddBoard, handleDeleteBoard } = useTaskBoard();
   return (
     <Flex>
       {cardList.map((card: Card) => (
@@ -36,7 +49,13 @@ const TaskBoard: React.FC = () => {
           backgroundColor={'green'}
           margin={'10px'}
         >
-          <Text>{card.title}</Text>
+          <Text fontSize={'lg'}>{card.title}</Text>
+          <IconButton
+            aria-label="delete card"
+            icon={<DeleteIcon />}
+            color="red.500"
+            onClick={handleDeleteBoard(card.id)}
+          />
           <TaskCard cardId={card.id} />
         </Box>
       ))}
