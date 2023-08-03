@@ -50,12 +50,12 @@ func (s TodoStore) DeleteTodos() error {
 	return nil
 }
 
-func (s TodoStore) UpdateTodo(id string, todo *model.Todo) error {
+func (s TodoStore) UpdateTodo(id string, todo *model.Todo) (*model.Todo, error) {
 	uuid, _ := uuid.Parse(id)
 	todo.ID = uuid
 	result := s.db.Update(todo)
 	if result.Error != nil {
-		return fmt.Errorf("fail to delete todo")
+		return todo, fmt.Errorf("fail to delete todo")
 	}
-	return nil
+	return todo, nil
 }
