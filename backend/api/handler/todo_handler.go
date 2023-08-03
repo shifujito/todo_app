@@ -56,6 +56,20 @@ func (h *TodoHandler) DeleteTodo(c echo.Context) error {
 	return c.JSON(http.StatusCreated, nil)
 }
 
+func (h *TodoHandler) UpdateTodo(c echo.Context) error {
+	id := c.Param("id")
+	t := new(model.Todo)
+	if err := c.Bind(t); err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	// update
+	todo, err := h.Store.UpdateTodo(id, t)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, todo)
+}
+
 func requiredTodoValid(t *model.Todo) error {
 	// タイトルは必須
 	if t.Title == "" {

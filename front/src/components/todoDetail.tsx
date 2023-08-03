@@ -43,6 +43,10 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo, onDeleteTodo }) => {
     isDragging = false;
   };
 
+  const onSaveClick = () => {
+    return;
+  };
+
   // const handleStartDateInput = (date: any) => {
   //   setStartDate(date);
   // };
@@ -95,7 +99,11 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo, onDeleteTodo }) => {
             <Button colorScheme="red" onClick={handleDelete}>
               削除
             </Button>
-            <Button colorScheme="blue" marginLeft={'5px'}>
+            <Button
+              colorScheme="blue"
+              marginLeft={'5px'}
+              onClick={(e) => e.preventDefault()}
+            >
               保存
             </Button>
           </ModalFooter>
