@@ -17,6 +17,13 @@ export type PostTodo = {
   cardId: number;
 };
 
+export type UpdateTodo = {
+  id: string;
+  cardId: number;
+  title: string;
+  content: string;
+};
+
 export type PostCard = {
   title: string;
 };

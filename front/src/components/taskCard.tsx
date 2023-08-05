@@ -38,6 +38,21 @@ const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
     });
   };
 
+  const handleSaveTodo = (updateTodo: Todo) => {
+    axios
+      .patch(`http://localhost:8080/todos/${updateTodo.id}`, updateTodo)
+      .then(() => {
+        const updateTodos = todoList.map((todo) => {
+          if (todo.id === updateTodo.id) {
+            return updateTodo;
+          } else {
+            return todo;
+          }
+        });
+        setTodoList(updateTodos);
+      });
+  };
+
   return (
     <>
       <ul>
@@ -46,6 +61,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
             key={todo.id}
             todo={todo}
             onDeleteTodo={handleDeleteTodo}
+            onSaveTodo={handleSaveTodo}
           />
         ))}
       </ul>

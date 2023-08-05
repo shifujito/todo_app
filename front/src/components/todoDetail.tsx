@@ -19,9 +19,14 @@ import {
 type TodoDetailProps = {
   todo: Todo;
   onDeleteTodo: (id: string) => void;
+  onSaveTodo: (updateTodo: Todo) => void;
 };
 
-const TodoDetail: React.FC<TodoDetailProps> = ({ todo, onDeleteTodo }) => {
+const TodoDetail: React.FC<TodoDetailProps> = ({
+  todo,
+  onDeleteTodo,
+  onSaveTodo,
+}) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [title, setTitle] = useState<string>(todo.title);
   const [content, setContent] = useState<string>(todo.content);
@@ -38,13 +43,13 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo, onDeleteTodo }) => {
     onDeleteTodo(todo.id);
   };
 
+  const handleSave = () => {
+    onSaveTodo(todo);
+  };
+
   let isDragging = false;
   const handleDragStart = () => {
     isDragging = false;
-  };
-
-  const onSaveClick = () => {
-    return;
   };
 
   // const handleStartDateInput = (date: any) => {
@@ -99,11 +104,7 @@ const TodoDetail: React.FC<TodoDetailProps> = ({ todo, onDeleteTodo }) => {
             <Button colorScheme="red" onClick={handleDelete}>
               削除
             </Button>
-            <Button
-              colorScheme="blue"
-              marginLeft={'5px'}
-              onClick={(e) => e.preventDefault()}
-            >
+            <Button colorScheme="blue" marginLeft={'5px'} onClick={handleSave}>
               保存
             </Button>
           </ModalFooter>
