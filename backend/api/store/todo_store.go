@@ -34,7 +34,7 @@ func (s TodoStore) DeleteTodo(id string) error {
 	todo := model.Todo{}
 	uuid, _ := uuid.Parse(id)
 	todo.ID = uuid
-	result := s.db.Delete(todo)
+	result := s.db.Debug().Delete(todo)
 	if result.Error != nil {
 		return fmt.Errorf("Invalid request param")
 	}
@@ -53,9 +53,9 @@ func (s TodoStore) DeleteTodos() error {
 func (s TodoStore) UpdateTodo(id string, todo *model.Todo) (*model.Todo, error) {
 	uuid, _ := uuid.Parse(id)
 	todo.ID = uuid
-	result := s.db.Update(todo)
+	result := s.db.Debug().Save(todo)
 	if result.Error != nil {
-		return todo, fmt.Errorf("fail to delete todo")
+		return todo, result.Error
 	}
 	return todo, nil
 }
