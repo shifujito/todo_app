@@ -26,7 +26,6 @@ const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
 
   const handleAddTodo = (newTodo: PostTodo) => {
     axios.post('http://localhost:8080/todos', newTodo).then((res) => {
-      console.log(res);
       setTodoList([...todoList, res.data]);
     });
   };
@@ -39,7 +38,6 @@ const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
   };
 
   const handleSaveTodo = (updateTodo: Todo) => {
-    console.log(updateTodo);
     axios
       .patch(`http://localhost:8080/todos/${updateTodo.id}`, updateTodo)
       .then(() => {
