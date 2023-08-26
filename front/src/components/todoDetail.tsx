@@ -47,6 +47,8 @@ const TodoDetail: React.FC<TodoDetailProps> = ({
     // タイトルを更新
     todo.title = title;
     onSaveTodo(todo);
+    // Modalを閉じる
+    onClose();
   };
 
   let isDragging = false;
