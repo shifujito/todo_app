@@ -16,8 +16,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ cardId }) => {
         /* リクエストボディ */
       })
       .then((response) => {
-        const todoList: Todo[] = response.data;
-        setTodoList(todoList.filter((todo) => todo.cardId === cardId));
+        const hoge: Todo[] = response.data;
+        setTodoList(hoge.filter((todo) => todo.cardId === cardId));
       })
       .catch((error) => {
         console.error(error);

@@ -46,6 +46,7 @@ const TodoDetail: React.FC<TodoDetailProps> = ({
   const handleSave = () => {
     // タイトルを更新
     todo.title = title;
+    todo.content = content;
     onSaveTodo(todo);
     // Modalを閉じる
     onClose();
